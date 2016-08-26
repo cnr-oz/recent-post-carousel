@@ -12,34 +12,37 @@
 // Add Shortcode
 function cnr_recent_post_carousel() {
 
+    $output = '';
+
     $args = array(
         'post_type'    => 'post',
         'posts_per_page' => 5
     );
-    $count = 0;
+
     $the_query = new WP_Query( $args );
     if($the_query->have_posts()) {
+        $output .= '<div class="owl-carousel cnr-recents">';
         while ($the_query->have_posts()) {
-            $count++;
-            echo $count;
             $the_query->the_post();
             $pid = get_the_id();
-            $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($pid), 'full' );
+            $thumb = wp_get_attachment_image_src(get_post_thumbnail_id($pid), 'large');
             $url = $thumb[0];
 
-            $output = '';
-            $output .= '<div class="the-content" style="background-image: url(' . $url . ')">';
-            $output .= '';
-            $output .= '    <div class="img-title">';
-            $output .=          get_the_title();
-            $output .= '    </div>';
-            $output .= '    <div class="img-text">';
-            $output .=          get_the_excerpt();
+            $output .= '<div class="owl-content" style="background-image: url(' . $url . ')">';
+            $output .= '<div class="owl-box">';
+            $output .= '        <div class="img-title">';
+            $output .=              get_the_title();
+            $output .= '        </div>';
+            $output .= '        <div class="img-text">';
+            $output .=              get_the_excerpt();
+            $output .= '        </div>';
             $output .= '    </div>';
             $output .= '</div>';
         }
+        $output .= '</div>';
     }
-    return $output;
+        return $output;
+
 }
 add_shortcode( 'recent_post_carousel', 'cnr_recent_post_carousel' );
 

@@ -1,0 +1,51 @@
+.owl-content{
+    width: 660px;
+    height: 350px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.owl-content .owl-box{
+    position: absolute;
+    color: white;
+    top: 75px;
+}
+
+.owl-content .img-title{
+    background-color: #ED1C24;
+    padding: 30px 20px;
+    max-width: 350px;
+    font-size: 22px;
+}
+
+.owl-content .img-text{
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    max-width: 540px;
+}
+
+.owl-dot{
+    height: 15px;
+    width: 15px;
+    background-color: rgba(0,0,0,0.5);
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+}
+
+.owl-dot.active{
+    background-color: #ED1C24;
+}
+
+.owl-dots{
+    display: flex;
+}
+
+.owl-dot:not(:first-child){
+    margin-left: 15px;
+}
+
+.owl-controls{
+    position: absolute;
+    top: 10px;
+    left: 505px;
+}
